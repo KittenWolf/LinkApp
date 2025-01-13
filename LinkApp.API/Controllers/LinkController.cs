@@ -45,8 +45,9 @@ namespace LinkApp.API.Controllers
                 return NotFound();
             }
 
-            // Возможно стоит делать редирект.
-            return Ok();            
+            var result = await _linkRepository.GetByToken(token);
+
+            return Redirect(result!);
         }
 
         [HttpPut("{token}")]
